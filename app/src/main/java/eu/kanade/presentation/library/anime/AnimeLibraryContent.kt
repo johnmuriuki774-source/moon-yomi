@@ -26,6 +26,9 @@ import tachiyomi.domain.library.model.LibraryDisplayMode
 import tachiyomi.presentation.core.components.material.PullRefresh
 import kotlin.time.Duration.Companion.seconds
 
+import eu.kanade.presentation.home.components.FeaturedAnimeHeader
+import tachiyomi.domain.entries.anime.model.Anime
+
 @Composable
 fun AnimeLibraryContent(
     categories: List<Category>,
@@ -46,6 +49,8 @@ fun AnimeLibraryContent(
     getDisplayMode: (Int) -> PreferenceMutableState<LibraryDisplayMode>,
     getColumnsForOrientation: (Boolean) -> PreferenceMutableState<Int>,
     getAnimeLibraryForPage: (Int) -> List<AnimeLibraryItem>,
+    featuredAnime: Anime?,
+    onFeaturedAnimeClicked: (Anime) -> Unit,
 ) {
     Column(
         modifier = Modifier.padding(
@@ -54,6 +59,12 @@ fun AnimeLibraryContent(
             end = contentPadding.calculateEndPadding(LocalLayoutDirection.current),
         ),
     ) {
+        if (featuredAnime != null && searchQuery.isNullOrEmpty()) {
+            FeaturedAnimeHeader(
+                anime = featuredAnime,
+                onDetailsClick = { onFeaturedAnimeClicked(featuredAnime) },
+            )
+        }
         val coercedCurrentPage = remember { currentPage().coerceAtMost(categories.lastIndex) }
         val pagerState = rememberPagerState(coercedCurrentPage) { categories.size }
 

@@ -228,6 +228,8 @@ data object AnimeLibraryTab : Tab {
                                 it,
                             )
                         },
+                        featuredAnime = state.getAnimelibItemsByPage(0).firstOrNull()?.libraryAnime?.anime,
+                        onFeaturedAnimeClicked = { navigator.push(AnimeScreen(it.id)) },
                     ) { state.getAnimelibItemsByPage(it) }
                 }
             }

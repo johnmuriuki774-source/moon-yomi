@@ -110,7 +110,7 @@ fun AnimeInfoBox(
     doSearch: (query: String, global: Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Box(modifier = modifier) {
+    Box(modifier = modifier.fillMaxWidth()) {
         // Backdrop
         val backdropGradientColors = listOf(
             Color.Transparent,
@@ -125,28 +125,36 @@ fun AnimeInfoBox(
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .matchParentSize()
+                .fillMaxWidth()
+                .height(300.dp) // Increased height for more cinematic feel
                 .drawWithContent {
                     drawContent()
                     drawRect(
                         brush = Brush.verticalGradient(colors = backdropGradientColors),
                     )
                 }
-                .blur(4.dp)
-                .alpha(0.2f),
+                .blur(8.dp) // Increased blur
+                .alpha(0.3f),
         )
 
         // Anime & source info
         CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onSurface) {
             if (!isTabletUi) {
-                AnimeAndSourceTitlesSmall(
-                    appBarPadding = appBarPadding,
-                    anime = anime,
-                    sourceName = sourceName,
-                    isStubSource = isStubSource,
-                    onCoverClick = onCoverClick,
-                    doSearch = doSearch,
-                )
+                // Modified layout for smaller screens to make the cover more prominent
+                Column(
+                    modifier = Modifier
+                        .padding(top = appBarPadding + 16.dp)
+                        .padding(horizontal = 16.dp),
+                ) {
+                    AnimeAndSourceTitlesSmall(
+                        appBarPadding = 0.dp, // Already applied above
+                        anime = anime,
+                        sourceName = sourceName,
+                        isStubSource = isStubSource,
+                        onCoverClick = onCoverClick,
+                        doSearch = doSearch,
+                    )
+                }
             } else {
                 AnimeAndSourceTitlesLarge(
                     appBarPadding = appBarPadding,

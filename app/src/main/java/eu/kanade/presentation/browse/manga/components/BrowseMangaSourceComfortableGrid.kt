@@ -19,6 +19,7 @@ import kotlinx.coroutines.flow.StateFlow
 import tachiyomi.domain.entries.manga.model.Manga
 import tachiyomi.domain.entries.manga.model.MangaCover
 import tachiyomi.presentation.core.util.plus
+import eu.kanade.tachiyomi.ui.browse.BrowseTopArea
 
 @Composable
 fun BrowseMangaSourceComfortableGrid(
@@ -34,6 +35,16 @@ fun BrowseMangaSourceComfortableGrid(
         verticalArrangement = Arrangement.spacedBy(CommonEntryItemDefaults.GridVerticalSpacer),
         horizontalArrangement = Arrangement.spacedBy(CommonEntryItemDefaults.GridHorizontalSpacer),
     ) {
+        // Top banner area (additive) - uses placeholders
+        item(span = { GridItemSpan(maxLineSpan) }) {
+            BrowseTopArea(items = listOf(
+                "Featured 1" to null,
+                "Stream A" to null,
+                "Stream B" to null,
+                "Stream C" to null,
+            ))
+        }
+
         if (mangaList.loadState.prepend is LoadState.Loading) {
             item(span = { GridItemSpan(maxLineSpan) }) {
                 BrowseSourceLoadingItem()

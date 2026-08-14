@@ -31,6 +31,10 @@ dependencies {
     api(projects.core.common)
     api(projects.i18n)
 
+    // Coil
+    implementation(platform(libs.coil.bom))
+    implementation(libs.coil.compose)
+
     // Compose
     implementation(compose.activity)
     implementation(compose.foundation)

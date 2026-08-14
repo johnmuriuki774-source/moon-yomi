@@ -30,7 +30,7 @@ class MangaSourcesFilterScreen : Screen() {
         if (state is MangaSourcesFilterScreenModel.State.Error) {
             val context = LocalContext.current
             LaunchedEffect(Unit) {
-                context.toast(MR.strings.internal_error)
+                context.toast("Failed to load filter list. Please try again.")
                 navigator.pop()
             }
             return

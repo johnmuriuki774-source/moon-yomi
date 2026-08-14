@@ -39,6 +39,7 @@ object SettingsSecurityScreen : SearchableSettings {
             Preference.PreferenceItem.SwitchPreference(
                 preference = useAuthPref,
                 title = stringResource(MR.strings.lock_with_biometrics),
+                subtitle = "Require biometric authentication to open the app",
                 enabled = authSupported,
                 onValueChanged = {
                     (context as FragmentActivity).authenticate(
@@ -62,6 +63,7 @@ object SettingsSecurityScreen : SearchableSettings {
                     }
                     .toImmutableMap(),
                 title = stringResource(MR.strings.lock_when_idle),
+                subtitle = "Time to wait before locking the app after exiting",
                 enabled = authSupported && useAuth,
                 onValueChanged = {
                     (context as FragmentActivity).authenticate(
@@ -72,6 +74,7 @@ object SettingsSecurityScreen : SearchableSettings {
             Preference.PreferenceItem.SwitchPreference(
                 preference = securityPreferences.hideNotificationContent(),
                 title = stringResource(MR.strings.hide_notification_content),
+                subtitle = "Hide entry titles in notifications",
             ),
             Preference.PreferenceItem.ListPreference(
                 preference = securityPreferences.secureScreen(),
@@ -79,6 +82,7 @@ object SettingsSecurityScreen : SearchableSettings {
                     .associateWith { stringResource(it.titleRes) }
                     .toImmutableMap(),
                 title = stringResource(MR.strings.secure_screen),
+                subtitle = "Prevent screenshots and hide app preview in recent apps",
             ),
             Preference.PreferenceItem.InfoPreference(stringResource(MR.strings.secure_screen_summary)),
         )

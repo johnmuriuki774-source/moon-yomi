@@ -91,6 +91,7 @@ fun EntryCompactGridItem(
                 ItemCover.Book(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .clip(RoundedCornerShape(12.dp))
                         .alpha(if (isSelected) GRID_SELECTED_COVER_ALPHA else coverAlpha),
                     data = coverData,
                 )
@@ -109,7 +110,7 @@ fun EntryCompactGridItem(
                         iconSize = ContinueViewingButtonIconSizeLarge,
                         onClick = onClickContinueViewing,
                         modifier = Modifier
-                            .padding(ContinueViewingButtonGridPadding)
+                            .padding(8.dp)
                             .align(Alignment.BottomEnd),
                     )
                 }
@@ -198,6 +199,7 @@ fun EntryComfortableGridItem(
                     ItemCover.Book(
                         modifier = Modifier
                             .fillMaxWidth()
+                            .clip(RoundedCornerShape(12.dp))
                             .alpha(if (isSelected) GRID_SELECTED_COVER_ALPHA else coverAlpha),
                         data = coverData,
                     )
@@ -211,14 +213,14 @@ fun EntryComfortableGridItem(
                             iconSize = ContinueViewingButtonIconSizeLarge,
                             onClick = onClickContinueViewing,
                             modifier = Modifier
-                                .padding(ContinueViewingButtonGridPadding)
+                                .padding(8.dp)
                                 .align(Alignment.BottomEnd),
                         )
                     }
                 },
             )
             GridItemTitle(
-                modifier = Modifier.padding(4.dp),
+                modifier = Modifier.padding(top = 8.dp, start = 4.dp, end = 4.dp),
                 title = title,
                 style = MaterialTheme.typography.titleSmall,
                 minLines = 2,

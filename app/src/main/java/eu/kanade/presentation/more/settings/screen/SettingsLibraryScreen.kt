@@ -137,6 +137,7 @@ object SettingsLibraryScreen : SearchableSettings {
                 Preference.PreferenceItem.SwitchPreference(
                     preference = libraryPreferences.categorizedDisplaySettings(),
                     title = stringResource(MR.strings.categorized_display_settings),
+                    subtitle = "Allow per-category settings for sorting and display",
                     onValueChanged = {
                         if (!it) {
                             scope.launch {
@@ -149,6 +150,7 @@ object SettingsLibraryScreen : SearchableSettings {
                 Preference.PreferenceItem.SwitchPreference(
                     preference = libraryPreferences.hideHiddenCategoriesSettings(),
                     title = stringResource(AYMR.strings.pref_category_hide_hidden),
+                    subtitle = "Hide categories marked as hidden in the library view",
                 ),
             ),
         )
@@ -290,10 +292,12 @@ object SettingsLibraryScreen : SearchableSettings {
                         ENTRY_OUTSIDE_RELEASE_PERIOD to stringResource(MR.strings.pref_update_only_in_release_period),
                     ),
                     title = stringResource(MR.strings.pref_library_update_smart_update),
+                    subtitle = "Filter library entries to update based on their status",
                 ),
                 Preference.PreferenceItem.SwitchPreference(
                     preference = libraryPreferences.newShowUpdatesCount(),
                     title = stringResource(AYMR.strings.pref_library_update_show_tab_badge),
+                    subtitle = "Show an unread count badge on the updates tab",
                 ),
             ),
         )

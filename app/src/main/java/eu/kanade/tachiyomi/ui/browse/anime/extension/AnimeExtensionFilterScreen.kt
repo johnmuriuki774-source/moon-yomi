@@ -41,7 +41,7 @@ class AnimeExtensionFilterScreen : Screen() {
             screenModel.events.collectLatest {
                 when (it) {
                     AnimeExtensionFilterEvent.FailedFetchingLanguages -> {
-                        context.toast(MR.strings.internal_error)
+                        context.toast("Failed to load filter list. Please try again.")
                     }
                 }
             }

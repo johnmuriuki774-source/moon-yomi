@@ -139,14 +139,17 @@ object SettingsTrackingScreen : SearchableSettings {
             Preference.PreferenceItem.SwitchPreference(
                 preference = trackPreferences.autoUpdateTrack(),
                 title = stringResource(AYMR.strings.pref_auto_update_manga_sync),
+                subtitle = "Automatically update progress on tracker after reading",
             ),
             Preference.PreferenceItem.SwitchPreference(
                 preference = trackPreferences.trackOnAddingToLibrary(),
                 title = stringResource(AYMR.strings.pref_track_on_add_library),
+                subtitle = "Prompt to track when adding an entry to library",
             ),
             Preference.PreferenceItem.SwitchPreference(
                 preference = trackPreferences.showNextEpisodeAiringTime(),
                 title = stringResource(AYMR.strings.pref_show_next_episode_airing_time),
+                subtitle = "Display next episode airing time in entries",
             ),
             Preference.PreferenceItem.ListPreference(
                 preference = trackPreferences.autoUpdateTrackOnMarkRead(),
@@ -154,6 +157,7 @@ object SettingsTrackingScreen : SearchableSettings {
                     .associateWith { stringResource(it.titleRes) }
                     .toPersistentMap(),
                 title = stringResource(AYMR.strings.pref_auto_update_manga_on_mark_read),
+                subtitle = "Update progress when a chapter/episode is marked as read",
             ),
             Preference.PreferenceGroup(
                 title = stringResource(MR.strings.services),

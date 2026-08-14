@@ -88,6 +88,7 @@ object SettingsAppearanceScreen : SearchableSettings {
                 Preference.PreferenceItem.SwitchPreference(
                     preference = amoledPref,
                     title = stringResource(MR.strings.pref_dark_theme_pure_black),
+                    subtitle = "Use a pure black background for dark mode",
                     enabled = themeMode != ThemeMode.LIGHT,
                     onValueChanged = {
                         (context as? Activity)?.let { ActivityCompat.recreate(it) }
@@ -147,6 +148,7 @@ object SettingsAppearanceScreen : SearchableSettings {
                         .associateWith { stringResource(it.titleRes) }
                         .toImmutableMap(),
                     title = "Navigation Style",
+                    subtitle = "Customize the navigation menu layout",
                     onValueChanged = { true },
                 ),
                 Preference.PreferenceItem.ListPreference(

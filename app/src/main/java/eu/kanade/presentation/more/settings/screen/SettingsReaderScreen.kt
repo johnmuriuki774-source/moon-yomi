@@ -62,6 +62,7 @@ object SettingsReaderScreen : SearchableSettings {
             Preference.PreferenceItem.SwitchPreference(
                 preference = readerPref.pageTransitions(),
                 title = stringResource(MR.strings.pref_page_transitions),
+                subtitle = "Animate transitions between pages",
             ),
             getDisplayGroup(readerPreferences = readerPref),
             getEInkGroup(readerPreferences = readerPref),
@@ -100,10 +101,12 @@ object SettingsReaderScreen : SearchableSettings {
                 Preference.PreferenceItem.SwitchPreference(
                     preference = fullscreenPref,
                     title = stringResource(MR.strings.pref_fullscreen),
+                    subtitle = "Hide system bars while reading",
                 ),
                 Preference.PreferenceItem.SwitchPreference(
                     preference = readerPreferences.cutoutShort(),
                     title = stringResource(MR.strings.pref_cutout_short),
+                    subtitle = "Extend reader into display cutout area",
                     enabled = fullscreen &&
                         Build.VERSION.SDK_INT >= Build.VERSION_CODES.P &&
                         LocalView.current.rootWindowInsets?.displayCutout != null, // has cutout
@@ -111,10 +114,12 @@ object SettingsReaderScreen : SearchableSettings {
                 Preference.PreferenceItem.SwitchPreference(
                     preference = readerPreferences.keepScreenOn(),
                     title = stringResource(MR.strings.pref_keep_screen_on),
+                    subtitle = "Prevent screen from turning off while reading",
                 ),
                 Preference.PreferenceItem.SwitchPreference(
                     preference = readerPreferences.showPageNumber(),
                     title = stringResource(MR.strings.pref_show_page_number),
+                    subtitle = "Display the current page number",
                 ),
             ),
         )
@@ -185,22 +190,27 @@ object SettingsReaderScreen : SearchableSettings {
                 Preference.PreferenceItem.SwitchPreference(
                     preference = readerPreferences.skipRead(),
                     title = stringResource(MR.strings.pref_skip_read_chapters),
+                    subtitle = "Automatically skip chapters already marked as read",
                 ),
                 Preference.PreferenceItem.SwitchPreference(
                     preference = readerPreferences.skipFiltered(),
                     title = stringResource(MR.strings.pref_skip_filtered_chapters),
+                    subtitle = "Automatically skip chapters hidden by filters",
                 ),
                 Preference.PreferenceItem.SwitchPreference(
                     preference = readerPreferences.skipDupe(),
                     title = stringResource(MR.strings.pref_skip_dupe_chapters),
+                    subtitle = "Automatically skip duplicate chapters",
                 ),
                 Preference.PreferenceItem.SwitchPreference(
                     preference = readerPreferences.alwaysShowChapterTransition(),
                     title = stringResource(MR.strings.pref_always_show_chapter_transition),
+                    subtitle = "Always show transition screen between chapters",
                 ),
                 Preference.PreferenceItem.SwitchPreference(
                     preference = readerPreferences.preserveReadingPosition(),
                     title = stringResource(AYMR.strings.pref_preserve_reading_position),
+                    subtitle = "Return to last read page when opening chapter",
                 ),
             ),
         )

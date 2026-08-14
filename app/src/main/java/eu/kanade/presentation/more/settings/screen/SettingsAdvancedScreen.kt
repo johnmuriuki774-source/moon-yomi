@@ -119,14 +119,17 @@ object SettingsAdvancedScreen : SearchableSettings {
             ),
             Preference.PreferenceItem.TextPreference(
                 title = stringResource(MR.strings.pref_debug_info),
+                subtitle = "View detailed diagnostic information",
                 onClick = { navigator.push(DebugInfoScreen()) },
             ),
             Preference.PreferenceItem.TextPreference(
                 title = stringResource(MR.strings.pref_onboarding_guide),
+                subtitle = "View the initial setup guide",
                 onClick = { navigator.push(OnboardingScreen()) },
             ),
             Preference.PreferenceItem.TextPreference(
                 title = stringResource(MR.strings.pref_manage_notifications),
+                subtitle = "Configure app notification settings",
                 onClick = {
                     val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
                         putExtra(Settings.EXTRA_APP_PACKAGE, context.packageName)
@@ -231,6 +234,7 @@ object SettingsAdvancedScreen : SearchableSettings {
             preferenceItems = persistentListOf(
                 Preference.PreferenceItem.TextPreference(
                     title = stringResource(MR.strings.pref_clear_cookies),
+                    subtitle = "Clear cookies stored for websites",
                     onClick = {
                         networkHelper.cookieJar.removeAll()
                         context.toast(MR.strings.cookies_cleared)
@@ -238,6 +242,7 @@ object SettingsAdvancedScreen : SearchableSettings {
                 ),
                 Preference.PreferenceItem.TextPreference(
                     title = stringResource(MR.strings.pref_clear_webview_data),
+                    subtitle = "Clear cache and data stored by the WebView",
                     onClick = {
                         try {
                             WebView(context).run {
@@ -275,6 +280,7 @@ object SettingsAdvancedScreen : SearchableSettings {
                         PREF_DOH_LIBREDNS to "LibreDNS",
                     ),
                     title = stringResource(MR.strings.pref_dns_over_https),
+                    subtitle = "Use DNS-over-HTTPS for enhanced privacy",
                     onValueChanged = {
                         context.toast(MR.strings.requires_app_restart)
                         true
@@ -283,6 +289,7 @@ object SettingsAdvancedScreen : SearchableSettings {
                 Preference.PreferenceItem.EditTextPreference(
                     preference = userAgentPref,
                     title = stringResource(MR.strings.pref_user_agent_string),
+                    subtitle = "Override the default User-Agent string",
                     onValueChanged = {
                         try {
                             // OkHttp checks for valid values internally
@@ -297,6 +304,7 @@ object SettingsAdvancedScreen : SearchableSettings {
                 ),
                 Preference.PreferenceItem.TextPreference(
                     title = stringResource(MR.strings.pref_reset_user_agent_string),
+                    subtitle = "Reset to the app default User-Agent",
                     enabled = remember(userAgent) { userAgent != userAgentPref.defaultValue() },
                     onClick = {
                         userAgentPref.delete()

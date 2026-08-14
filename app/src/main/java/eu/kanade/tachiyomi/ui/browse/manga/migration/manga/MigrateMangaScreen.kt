@@ -46,7 +46,7 @@ data class MigrateMangaScreen(
             screenModel.events.collectLatest { event ->
                 when (event) {
                     MigrationMangaEvent.FailedFetchingFavorites -> {
-                        context.toast(MR.strings.internal_error)
+                        context.toast("Failed to migrate. Please try again.")
                     }
                 }
             }

@@ -50,10 +50,12 @@ object SettingsBrowseScreen : SearchableSettings {
                     Preference.PreferenceItem.SwitchPreference(
                         preference = sourcePreferences.hideInAnimeLibraryItems(),
                         title = stringResource(AYMR.strings.pref_hide_in_anime_library_items),
+                        subtitle = "Hide anime already in library from sources",
                     ),
                     Preference.PreferenceItem.SwitchPreference(
                         preference = sourcePreferences.hideInMangaLibraryItems(),
                         title = stringResource(AYMR.strings.pref_hide_in_manga_library_items),
+                        subtitle = "Hide manga already in library from sources",
                     ),
                     Preference.PreferenceItem.TextPreference(
                         title = stringResource(AYMR.strings.label_anime_extension_repos),

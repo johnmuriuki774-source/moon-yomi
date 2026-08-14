@@ -11,6 +11,7 @@ import dev.icerock.moko.resources.StringResource
 import eu.kanade.presentation.util.Tab
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.ui.browse.BrowseTab
+import eu.kanade.tachiyomi.ui.home.HomeTab
 import eu.kanade.tachiyomi.ui.history.HistoriesTab
 import eu.kanade.tachiyomi.ui.library.anime.AnimeLibraryTab
 import eu.kanade.tachiyomi.ui.library.manga.MangaLibraryTab
@@ -40,6 +41,7 @@ enum class NavStyle(
     val tabs: List<Tab>
         get() {
             return mutableListOf(
+                HomeTab,
                 AnimeLibraryTab,
                 MangaLibraryTab,
                 UpdatesTab,

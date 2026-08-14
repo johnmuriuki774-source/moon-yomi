@@ -79,6 +79,7 @@ object SettingsDownloadScreen : SearchableSettings {
             Preference.PreferenceItem.SwitchPreference(
                 preference = downloadPreferences.downloadOnlyOverWifi(),
                 title = stringResource(MR.strings.connected_to_wifi),
+                subtitle = "Only download chapters when connected to Wi-Fi",
             ),
             Preference.PreferenceItem.TextPreference(
                 title = stringResource(AYMR.strings.download_speed_limit),
@@ -92,6 +93,7 @@ object SettingsDownloadScreen : SearchableSettings {
             Preference.PreferenceItem.SwitchPreference(
                 preference = downloadPreferences.saveChaptersAsCBZ(),
                 title = stringResource(MR.strings.save_chapter_as_cbz),
+                subtitle = "Save downloaded chapters as a single CBZ archive",
             ),
             Preference.PreferenceItem.SwitchPreference(
                 preference = downloadPreferences.splitTallImages(),
@@ -102,6 +104,7 @@ object SettingsDownloadScreen : SearchableSettings {
                 preference = downloadPreferences.numberOfDownloads(),
                 entries = (1..5).associateWith { it.toString() }.toImmutableMap(),
                 title = stringResource(AYMR.strings.pref_download_slots),
+                subtitle = "Number of simultaneous downloads",
             ),
             Preference.PreferenceItem.InfoPreference(stringResource(AYMR.strings.download_slots_info)),
             getDeleteChaptersGroup(
@@ -134,6 +137,7 @@ object SettingsDownloadScreen : SearchableSettings {
                 Preference.PreferenceItem.SwitchPreference(
                     preference = downloadPreferences.removeAfterMarkedAsRead(),
                     title = stringResource(AYMR.strings.pref_remove_after_marked_as_read),
+                    subtitle = "Automatically delete chapters after they are marked as read",
                 ),
                 Preference.PreferenceItem.ListPreference(
                     preference = downloadPreferences.removeAfterReadSlots(),
@@ -146,14 +150,17 @@ object SettingsDownloadScreen : SearchableSettings {
                         4 to stringResource(MR.strings.fifth_to_last),
                     ),
                     title = stringResource(AYMR.strings.pref_remove_after_read),
+                    subtitle = "Delete older chapters after reading a newer one",
                 ),
                 Preference.PreferenceItem.SwitchPreference(
                     preference = downloadPreferences.removeBookmarkedChapters(),
                     title = stringResource(AYMR.strings.pref_remove_bookmarked_chapters),
+                    subtitle = "Allow deleting chapters that have been bookmarked",
                 ),
                 Preference.PreferenceItem.SwitchPreference(
                     preference = downloadPreferences.downloadFillermarkedItems(),
                     title = stringResource(AYMR.strings.pref_download_fillermarked_items),
+                    subtitle = "Include filler-marked chapters in downloads",
                 ),
                 getExcludedAnimeCategoriesPreference(
                     downloadPreferences = downloadPreferences,

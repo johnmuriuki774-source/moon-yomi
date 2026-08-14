@@ -32,8 +32,8 @@ dependencies {
     api(projects.i18n)
 
     // Coil
-    api(platform(libs.coil.bom))
-    api(libs.coil.compose)
+    implementation(platform(libs.coil.bom))
+    implementation(libs.coil.compose)
 
     // Compose
     implementation(compose.activity)

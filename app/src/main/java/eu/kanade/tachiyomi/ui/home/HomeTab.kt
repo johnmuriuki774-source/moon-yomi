@@ -140,6 +140,7 @@ data object HomeTab : Tab {
                                 EntryComfortableGridItem(
                                     title = anime.title,
                                     onClick = { navigator.push(AnimeScreen(anime.id)) },
+                                    onLongClick = { /* TODO */ },
                                     coverData = anime.asAnimeCover(),
                                 )
                             }
@@ -164,6 +165,7 @@ data object HomeTab : Tab {
                                 EntryComfortableGridItem(
                                     title = anime.title,
                                     onClick = { navigator.push(AnimeScreen(anime.id)) },
+                                    onLongClick = { /* TODO */ },
                                     coverData = anime.asAnimeCover(),
                                 )
                             }

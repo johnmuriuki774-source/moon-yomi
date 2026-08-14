@@ -21,15 +21,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.model.rememberScreenModel
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import eu.kanade.presentation.library.components.EntryComfortableGridItem
 import eu.kanade.presentation.util.Tab
+import eu.kanade.tachiyomi.ui.entries.anime.AnimeScreen
 import tachiyomi.domain.entries.anime.model.asAnimeCover
 import tachiyomi.presentation.core.screens.LoadingScreen
-
-import cafe.adriel.voyager.navigator.LocalNavigator
-import cafe.adriel.voyager.navigator.currentOrThrow
-import eu.kanade.tachiyomi.ui.entries.anime.AnimeScreen
 
 data object HomeTab : Tab {
 

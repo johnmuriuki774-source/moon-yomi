@@ -110,12 +110,12 @@ data object HomeTab : Tab {
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
                         ) {
                             items(state.continueWatching) { history ->
-                                EntryComfortableGridItem(
-                                    title = history.anime.title,
-                                    onClick = { /* TODO: Navigate */ },
-                                    onLongClick = { /* TODO: Menu */ },
-                                    coverData = history.anime.asAnimeCover(),
-                                )
+                            EntryComfortableGridItem(
+                                title = history.title,
+                                onClick = { /* TODO: Navigate */ },
+                                onLongClick = { /* TODO: Menu */ },
+                                coverData = history.coverData,
+                            )
                             }
                         }
                     }

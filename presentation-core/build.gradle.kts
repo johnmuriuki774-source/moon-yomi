@@ -49,5 +49,4 @@ dependencies {
     implementation(androidx.paging.runtime)
     implementation(androidx.paging.compose)
     implementation(kotlinx.immutables)
-    implementation(libs.coil.compose)
 }

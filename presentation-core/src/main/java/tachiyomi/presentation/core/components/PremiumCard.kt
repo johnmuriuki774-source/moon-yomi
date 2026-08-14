@@ -34,8 +34,8 @@ fun PremiumContentCard(
             .aspectRatio(2f / 3f)
             .clip(RoundedCornerShape(12.dp))
             .background(MaterialTheme.colorScheme.surfaceVariant),
-            ) {
-            if (imageUrl != null) {
+    ) {
+        if (imageUrl != null) {
             AsyncImage(
                 model = imageUrl,
                 contentDescription = null,
@@ -44,8 +44,8 @@ fun PremiumContentCard(
                     .aspectRatio(2f / 3f),
                 contentScale = ContentScale.Crop,
             )
-            }
-            Box(
+        }
+        Box(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .background(
@@ -54,7 +54,7 @@ fun PremiumContentCard(
                     ),
                 )
                 .padding(12.dp),
-            ) {
+        ) {
             Column {
                 Text(
                     text = title,

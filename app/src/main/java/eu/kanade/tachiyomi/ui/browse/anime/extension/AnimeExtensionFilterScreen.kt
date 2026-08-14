@@ -12,7 +12,6 @@ import eu.kanade.presentation.browse.anime.AnimeExtensionFilterScreen
 import eu.kanade.presentation.util.Screen
 import eu.kanade.tachiyomi.util.system.toast
 import kotlinx.coroutines.flow.collectLatest
-import tachiyomi.i18n.MR
 import tachiyomi.presentation.core.screens.LoadingScreen
 
 class AnimeExtensionFilterScreen : Screen() {

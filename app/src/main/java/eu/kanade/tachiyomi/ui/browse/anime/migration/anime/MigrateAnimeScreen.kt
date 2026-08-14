@@ -14,7 +14,6 @@ import eu.kanade.tachiyomi.ui.browse.anime.migration.search.MigrateAnimeSearchSc
 import eu.kanade.tachiyomi.ui.entries.anime.AnimeScreen
 import eu.kanade.tachiyomi.util.system.toast
 import kotlinx.coroutines.flow.collectLatest
-import tachiyomi.i18n.MR
 import tachiyomi.presentation.core.screens.LoadingScreen
 
 data class MigrateAnimeScreen(

@@ -70,6 +70,7 @@ data object HomeTab : Tab {
                                 EntryComfortableGridItem(
                                     title = libraryAnime.anime.title,
                                     onClick = { navigator.push(AnimeScreen(libraryAnime.anime.id)) },
+                                    onLongClick = {},
                                     coverData = libraryAnime.anime.asAnimeCover(),
                                 )
                             }
@@ -116,6 +117,7 @@ data object HomeTab : Tab {
                                 EntryComfortableGridItem(
                                     title = history.title,
                                     onClick = { navigator.push(AnimeScreen(history.animeId)) },
+                                    onLongClick = {},
                                     coverData = history.coverData,
                                 )
                             }
@@ -140,7 +142,7 @@ data object HomeTab : Tab {
                                 EntryComfortableGridItem(
                                     title = anime.title,
                                     onClick = { navigator.push(AnimeScreen(anime.id)) },
-                                    onLongClick = { /* TODO */ },
+                                    onLongClick = {},
                                     coverData = anime.asAnimeCover(),
                                 )
                             }
@@ -165,7 +167,7 @@ data object HomeTab : Tab {
                                 EntryComfortableGridItem(
                                     title = anime.title,
                                     onClick = { navigator.push(AnimeScreen(anime.id)) },
-                                    onLongClick = { /* TODO */ },
+                                    onLongClick = {},
                                     coverData = anime.asAnimeCover(),
                                 )
                             }

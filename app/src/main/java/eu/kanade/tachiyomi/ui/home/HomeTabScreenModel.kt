@@ -53,7 +53,6 @@ class HomeTabScreenModel(
                 try {
                     val popularSAnime = source.getPopularAnime(1).animes
                     val popularAnime = popularSAnime.map { networkToLocalAnime.await(it.toDomainAnime(source.id)) }
-                    
                     val latestSAnime = source.getLatestUpdates(1).animes
                     val latestAnime = latestSAnime.map { networkToLocalAnime.await(it.toDomainAnime(source.id)) }
 

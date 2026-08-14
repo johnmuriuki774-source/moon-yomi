@@ -72,7 +72,6 @@ fun PremiumContentCard(
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                     )
-                    )
                 }
             }
         }

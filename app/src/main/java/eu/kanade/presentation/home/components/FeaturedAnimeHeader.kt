@@ -29,6 +29,7 @@ fun FeaturedAnimeHeader(
     onDetailsClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val backgroundColor = MaterialTheme.colorScheme.background
     Box(
         modifier = modifier
             .fillMaxWidth()
@@ -48,7 +49,7 @@ fun FeaturedAnimeHeader(
                     drawContent()
                     drawRect(
                         brush = Brush.verticalGradient(
-                            colors = listOf(Color.Transparent, MaterialTheme.colorScheme.background),
+                            colors = listOf(Color.Transparent, backgroundColor),
                         ),
                     )
                 },

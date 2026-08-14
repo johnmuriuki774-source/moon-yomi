@@ -24,7 +24,7 @@ import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import eu.kanade.presentation.library.components.EntryComfortableGridItem
 import eu.kanade.presentation.util.Tab
-import tachiyomi.domain.entries.anime.model.toEntryCover
+import tachiyomi.domain.entries.anime.model.asAnimeCover
 import tachiyomi.presentation.core.screens.LoadingScreen
 
 data object HomeTab : Tab {
@@ -67,7 +67,7 @@ data object HomeTab : Tab {
                                     title = libraryAnime.anime.title,
                                     onClick = { /* TODO: Navigate */ },
                                     onLongClick = { /* TODO: Menu */ },
-                                    coverData = libraryAnime.anime.toEntryCover(),
+                                    coverData = libraryAnime.anime.asAnimeCover(),
                                 )
                             }
                         }
@@ -114,7 +114,7 @@ data object HomeTab : Tab {
                                     title = history.anime.title,
                                     onClick = { /* TODO: Navigate */ },
                                     onLongClick = { /* TODO: Menu */ },
-                                    coverData = history.anime.toEntryCover(),
+                                    coverData = history.anime.asAnimeCover(),
                                 )
                             }
                         }

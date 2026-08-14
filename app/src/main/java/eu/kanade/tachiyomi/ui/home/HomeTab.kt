@@ -27,6 +27,10 @@ import eu.kanade.presentation.util.Tab
 import tachiyomi.domain.entries.anime.model.asAnimeCover
 import tachiyomi.presentation.core.screens.LoadingScreen
 
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
+import eu.kanade.tachiyomi.ui.entries.anime.AnimeScreen
+
 data object HomeTab : Tab {
 
     override val options: TabOptions
@@ -42,6 +46,7 @@ data object HomeTab : Tab {
     @OptIn(ExperimentalLayoutApi::class)
     @Composable
     override fun Content() {
+        val navigator = LocalNavigator.currentOrThrow
         val screenModel = rememberScreenModel { HomeTabScreenModel() }
         val state by screenModel.state.collectAsState()
 
@@ -65,8 +70,7 @@ data object HomeTab : Tab {
                             items(state.libraryAnime.take(10)) { libraryAnime ->
                                 EntryComfortableGridItem(
                                     title = libraryAnime.anime.title,
-                                    onClick = { /* TODO: Navigate */ },
-                                    onLongClick = { /* TODO: Menu */ },
+                                    onClick = { navigator.push(AnimeScreen(libraryAnime.anime.id)) },
                                     coverData = libraryAnime.anime.asAnimeCover(),
                                 )
                             }
@@ -112,9 +116,56 @@ data object HomeTab : Tab {
                             items(state.continueWatching) { history ->
                                 EntryComfortableGridItem(
                                     title = history.title,
-                                    onClick = { /* TODO: Navigate */ },
-                                    onLongClick = { /* TODO: Menu */ },
+                                    onClick = { navigator.push(AnimeScreen(history.animeId)) },
                                     coverData = history.coverData,
+                                )
+                            }
+                        }
+                    }
+                }
+
+                if (state.popularAnime.isNotEmpty()) {
+                    item {
+                        Text(
+                            text = "Popular This Season",
+                            style = MaterialTheme.typography.titleMedium,
+                            modifier = Modifier.padding(16.dp),
+                        )
+                    }
+                    item {
+                        LazyRow(
+                            contentPadding = PaddingValues(horizontal = 16.dp),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        ) {
+                            items(state.popularAnime) { anime ->
+                                EntryComfortableGridItem(
+                                    title = anime.title,
+                                    onClick = { navigator.push(AnimeScreen(anime.id)) },
+                                    coverData = anime.asAnimeCover(),
+                                )
+                            }
+                        }
+                    }
+                }
+
+                if (state.latestAnime.isNotEmpty()) {
+                    item {
+                        Text(
+                            text = "New Episodes",
+                            style = MaterialTheme.typography.titleMedium,
+                            modifier = Modifier.padding(16.dp),
+                        )
+                    }
+                    item {
+                        LazyRow(
+                            contentPadding = PaddingValues(horizontal = 16.dp),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        ) {
+                            items(state.latestAnime) { anime ->
+                                EntryComfortableGridItem(
+                                    title = anime.title,
+                                    onClick = { navigator.push(AnimeScreen(anime.id)) },
+                                    coverData = anime.asAnimeCover(),
                                 )
                             }
                         }

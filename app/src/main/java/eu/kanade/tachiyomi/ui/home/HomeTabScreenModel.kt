@@ -2,6 +2,7 @@ package eu.kanade.tachiyomi.ui.home
 
 import cafe.adriel.voyager.core.model.StateScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
+import eu.kanade.tachiyomi.source.anime.AndroidAnimeSourceManager
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.update
@@ -18,6 +19,7 @@ class HomeTabScreenModel(
     private val getLibraryAnime: GetLibraryAnime = Injekt.get(),
     private val getAnimeHistory: GetAnimeHistory = Injekt.get(),
     private val getVisibleAnimeCategories: GetVisibleAnimeCategories = Injekt.get(),
+    private val sourceManager: AndroidAnimeSourceManager = Injekt.get(),
 ) : StateScreenModel<HomeTabScreenModel.State>(State()) {
 
     init {
@@ -39,6 +41,25 @@ class HomeTabScreenModel(
                 }
             }
         }
+
+        screenModelScope.launch {
+            val sources = sourceManager.getOnlineSources()
+            if (sources.isNotEmpty()) {
+                val source = sources.first()
+                try {
+                    val popular = source.getPopularAnime(1).animes
+                    val latest = source.getLatestUpdates(1).animes
+                    mutableState.update {
+                        it.copy(
+                            popularAnime = popular,
+                            latestAnime = latest,
+                        )
+                    }
+                } catch (e: Exception) {
+                    // Handle source failure gracefully
+                }
+            }
+        }
     }
 
     data class State(
@@ -46,5 +67,7 @@ class HomeTabScreenModel(
         val continueWatching: List<AnimeHistoryWithRelations> = emptyList(),
         val libraryAnime: List<tachiyomi.domain.library.anime.LibraryAnime> = emptyList(),
         val categories: List<Category> = emptyList(),
+        val popularAnime: List<tachiyomi.animesource.model.SAnime> = emptyList(),
+        val latestAnime: List<tachiyomi.animesource.model.SAnime> = emptyList(),
     )
 }
